@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alejandro Benitez - Currículum Futurista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f3ff;
+            --secondary: #7700ff;
+            --dark: #0a0a1a;
+            --light: #f0f8ff;
+            --accent: #ff00aa;
+            --gray: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Fondo futurista */
+        #background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, #0a0a1a 0%, #050510 100%);
+        }
+
+        .grid-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary), transparent);
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            background: radial-gradient(circle, var(--secondary), transparent);
+            animation-delay: -5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 20%;
+            background: radial-gradient(circle, var(--accent), transparent);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, 50px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 80px) rotate(240deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 60px 0;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 243, 255, 0.5);
+        }
+
+        /* Secciones */
+        section {
+            margin: 80px 0;
+            padding: 40px;
+            background: rgba(20, 20, 40, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        /* Experiencia Laboral */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 60px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 12px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .timeline-content {
+            background: rgba(30, 30, 50, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .timeline-content .date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Habilidades */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-item {
+            background: rgba(30, 30, 50, 0.7);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+
+        /* Educación */
+        .education-item {
+            background: rgba(30, 30, 50, 0.7);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--secondary);
+            transition: transform 0.3s;
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+        }
+
+        .education-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* Contacto */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background: rgba(30, 30, 50, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-right: 20px;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+            margin-top: 80px;
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Efectos de partículas */
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div id="background-animation">
+        <div class="grid-lines"></div>
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">A<span style="color: var(--accent)">.</span>BENITEZ</div>
+            <nav class="nav-links">
+                <a href="#about">Sobre Mí</a>
+                <a href="#experience">Experiencia</a>
+                <a href="#skills">Habilidades</a>
+                <a href="#education">Educación</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <h1>ALEJANDRO BENITEZ</h1>
+            <h2>Creador de Páginas HTML · Asunción, Paraguay</h2>
+            <p>Desarrollador web especializado en crear experiencias digitales innovadoras y visualmente impactantes. Combino creatividad con tecnología para construir sitios web modernos, funcionales y con un diseño futurista.</p>
+            <a href="#contact" class="cta-button">CONTÁCTAME</a>
+        </section>
+
+        <!-- Experiencia Laboral -->
+        <section id="experience">
+            <h2 class="section-title">EXPERIENCIA LABORAL</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Empresa WOLF</h3>
+                        <span class="date">2022 - Presente</span>
+                        <p>Atención al cliente especializada en soluciones digitales. Responsable de asistencia técnica, soporte a usuarios y resolución de problemas relacionados con plataformas web.</p>
+                        <p>Implementé mejoras en el sistema de atención al cliente que redujeron los tiempos de respuesta en un 30%.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Desarrollador Web Freelance</h3>
+                        <span class="date">2021 - Presente</span>
+                        <p>Creación de páginas web personalizadas para clientes en Paraguay y Latinoamérica. Especializado en diseño responsivo, interactividad y experiencias de usuario optimizadas.</p>
+                        <p>He desarrollado más de 20 sitios web para diferentes sectores, logrando una satisfacción del cliente del 100%.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Habilidades -->
+        <section id="skills">
+            <h2 class="section-title">HABILIDADES TÉCNICAS</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="fas fa-code"></i></div>
+                        <h3>Desarrollo HTML/CSS</h3>
+                    </div>
+                    <p>Creación de sitios web modernos y responsivos con HTML5, CSS3 y técnicas avanzadas de diseño.</p>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-level="90"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="fas fa-language"></i></div>
+                        <h3>Idiomas</h3>
+                    </div>
+                    <p>Español (nativo), Inglés (nivel medio). Capacidad para leer documentación técnica y comunicarme en entornos profesionales.</p>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-level="70"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="fas fa-headset"></i></div>
+                        <h3>Atención al Cliente</h3>
+                    </div>
+                    <p>Soporte técnico, resolución de problemas y comunicación efectiva con usuarios finales.</p>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-level="85"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Creatividad & Innovación</h3>
+                    </div>
+                    <p>Diseño de interfaces únicas y soluciones creativas para problemas de desarrollo web.</p>
+                    <div class="skill-bar">
+                        <div class="skill-level" data-level="80"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educación -->
+        <section id="education">
+            <h2 class="section-title">EDUCACIÓN</h2>
+            <div class="education-item">
+                <h3>Bachillerato en Cooperativismo</h3>
+                <p>Educación secundaria concluida con enfoque en principios cooperativos, gestión de organizaciones y trabajo en equipo.</p>
+                <p>Desarrollé habilidades en liderazgo colaborativo y gestión de proyectos comunitarios.</p>
+            </div>
+            <div class="education-item">
+                <h3>Autodidacta en Desarrollo Web</h3>
+                <p>Aprendizaje continuo a través de plataformas online, documentación técnica y proyectos prácticos.</p>
+                <p>Especialización en HTML5, CSS3, JavaScript y diseño de interfaces modernas.</p>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contact">
+            <h2 class="section-title">CONTACTO</h2>
+            <p style="margin-bottom: 30px;">¿Interesado en trabajar juntos en un proyecto? Contáctame para discutir cómo puedo ayudar a hacer realidad tu visión digital.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h3>Ubicación</h3>
+                        <p>Asunción, Paraguay</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-language"></i></div>
+                    <div>
+                        <h3>Idiomas</h3>
+                        <p>Español (Nativo)<br>Inglés (Medio)</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-briefcase"></i></div>
+                    <div>
+                        <h3>Disponibilidad</h3>
+                        <p>Freelance · Proyectos Remotos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-logo">ALEJANDRO BENITEZ</div>
+            <p>© 2023 - Creador de Páginas HTML · Asunción, Paraguay</p>
+            <p style="margin-top: 20px; color: rgba(255,255,255,0.6);">Diseño futurista con animaciones suaves</p>
+        </footer>
+    </div>
+
+    <script>
+        // Animación de aparición de secciones al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Crear partículas para el fondo
+            createParticles();
+            
+            // Configurar observador para animar secciones al hacer scroll
+            const sections = document.querySelectorAll('section');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Animar barras de habilidades
+                        if (entry.target.id === 'skills') {
+                            animateSkillBars();
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Animar barras de habilidades
+            function animateSkillBars() {
+                const skillLevels = document.querySelectorAll('.skill-level');
+                skillLevels.forEach(skill => {
+                    const level = skill.getAttribute('data-level');
+                    skill.style.width = level + '%';
+                });
+            }
+
+            // Crear partículas flotantes
+            function createParticles() {
+                const particlesContainer = document.getElementById('particles');
+                const particleCount = 50;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Posición aleatoria
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    
+                    // Tamaño aleatorio
+                    const size = Math.random() * 3 + 1;
+                    
+                    // Opacidad aleatoria
+                    const opacity = Math.random() * 0.5 + 0.1;
+                    
+                    // Color aleatorio entre los colores de la paleta
+                    const colors = ['#00f3ff', '#7700ff', '#ff00aa'];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    // Aplicar estilos
+                    particle.style.left = `${posX}%`;
+                    particle.style.top = `${posY}%`;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.backgroundColor = color;
+                    particle.style.opacity = opacity;
+                    
+                    // Animación de movimiento
+                    const duration = Math.random() * 20 + 10;
+                    const delay = Math.random() * 5;
+                    
+                    particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
+                    
+                    particlesContainer.appendChild(particle);
+                }
+            }
+
+            // Suavizar el desplazamiento a los enlaces
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Animar elementos al cargar la página
+            setTimeout(() => {
+                document.querySelector('.hero').style.animationPlayState = 'running';
+            }, 300);
+        });
+
+        // Efecto de escritura para el título principal
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            
+            // Iniciar efecto de escritura después de un breve retraso
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html>
